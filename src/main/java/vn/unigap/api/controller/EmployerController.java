@@ -3,6 +3,7 @@ package vn.unigap.api.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,6 @@ import vn.unigap.api.dto.in.EmployerInputDTO;
 import vn.unigap.api.dto.out.EmployerOutputDTO;
 import vn.unigap.api.service.EmployerService;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -50,5 +50,6 @@ public class EmployerController {
         employerService.deleteEmployerById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 
 }

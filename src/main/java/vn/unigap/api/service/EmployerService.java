@@ -1,18 +1,20 @@
 package vn.unigap.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import vn.unigap.api.dto.in.EmployerInputDTO;
 import vn.unigap.api.dto.out.EmployerOutputDTO;
 import vn.unigap.api.entity.EmployerEntity;
 import vn.unigap.api.repository.EmployerRepository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class EmployerService {
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+
     @Autowired
     private EmployerRepository employerRepository;
 
