@@ -26,7 +26,8 @@ public class EmployerInputDTO {
 //    @province(min = 1, max = 64, message = Common.VALIDATE_PROVINCE_INVALID)
     private int province;
 
-//    @NotEmpty(message = Common.VALIDATE_DESCRIPTION_NOT_EMPTY)
+
 //    @Size(min = 3, max = 500, message = Common.VALIDATE_DESCRIPTION_INVALID)
     private String description;
-}
+
+    }
