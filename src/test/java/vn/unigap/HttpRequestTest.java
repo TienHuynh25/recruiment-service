@@ -20,6 +20,7 @@ class HttpRequestTest {
     @LocalServerPort
     private int port;
 
+    //Spring Boot provides a TestRestTemplate to use in your tests. This is auto-configured with the base URL for the web server.
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -39,11 +40,12 @@ class HttpRequestTest {
     void createEmployerTest() throws Exception {
         assertThat(this.restTemplate.postForObject("http://localhost:" + port + "/api/v1/employer",
                 "{\"name\":\"test\",\"email\":\"test@gmail.com\",\"description\":\"test\"}", String.class)).isNotNull();
+
     }
 
     @Test
     void getEmployerByIdTest() throws Exception {
-        String response = this.restTemplate.getForObject("http://localhost:" + port + "/api/v1/employer/1",
+        String response = this.restTemplate.getForObject("http://localhost:" + port + "/api/v1/employer/3093562",
                 String.class);
         assertThat(response).isNotNull();
 
@@ -52,5 +54,10 @@ class HttpRequestTest {
         assertThat(employer).isNotNull();
     }
 
+    @Test
+    void updateEmployerByIdTest() throws Exception {
+        assertThat(this.restTemplate.postForObject("http://localhost:" + port + "/api/v1/employer",
+                "{\"name\":\"test\",\"email\":\"updatedemail@gmail.com\",\"description\":\"test\"}", String.class)).isNotNull();
 
+    }
 }

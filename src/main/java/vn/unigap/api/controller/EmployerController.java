@@ -51,5 +51,4 @@ public class EmployerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
 }
