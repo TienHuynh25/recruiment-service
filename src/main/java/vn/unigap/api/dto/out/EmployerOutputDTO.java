@@ -15,7 +15,7 @@ public class EmployerOutputDTO {
     private Long id;
     private String email;
     private String name;
-    private int province;
+    private JobProvinceOutputDTO province;
     private String description;
     private Date createdAt;
     private Date updatedAt;
@@ -25,7 +25,8 @@ public class EmployerOutputDTO {
             .id(employerEntity.getId())
             .email(employerEntity.getEmail())
             .name(employerEntity.getName())
-            .province(employerEntity.getProvince())
+            .province(employerEntity.getProvince() != null ?
+                JobProvinceOutputDTO.fromEntity(employerEntity.getProvince()) : null)
             .description(employerEntity.getDescription())
             .createdAt(employerEntity.getCreatedAt())
             .updatedAt(employerEntity.getUpdatedAt())

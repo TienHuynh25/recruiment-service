@@ -30,6 +30,11 @@ logging:
     org.springframework.security: DEBUG
 
 ---
+jwt:
+  secret: ${JWT_SECRET:change-me-in-production-this-is-a-very-long-secret-key-for-jwt-token-generation}
+  expiration: 86400000  # 24 hours in milliseconds
+
+---
 spring:
   cache:
     cache-names: USER

@@ -10,6 +10,7 @@ import vn.unigap.api.dto.in.EmployerInputDTO;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Assertions;
 import vn.unigap.api.dto.out.EmployerOutputDTO;
+import vn.unigap.api.dto.response.ApiResponse;
 
 
 @SpringBootTest
@@ -29,20 +30,21 @@ class SmokeTest {
 		EmployerInputDTO employerInputDTO = EmployerInputDTO.builder()
 				.name("test")
 				.email("test@gmail.com")
+				.provinceId(1L)
 				.description("test")
 				.build();
 
 		// Act
-		ResponseEntity<EmployerOutputDTO> result = employerController.createEmployer(employerInputDTO);
+		ResponseEntity<ApiResponse<EmployerOutputDTO>> result = employerController.createEmployer(employerInputDTO);
 
 
 		// Assert
 		Assertions.assertNotNull(result, "Expected non-null result from createEmployer");
-
 		Assertions.assertNotNull(result.getBody(), "Expected non-null body from createEmployer");
-		assertThat(result.getBody().getName()).isEqualTo("test");
+		Assertions.assertNotNull(result.getBody().getObject(), "Expected non-null object in ApiResponse");
+		assertThat(result.getBody().getObject().getName()).isEqualTo("test");
 
-		employerController.deleteEmployerById(result.getBody().getId());
+		employerController.deleteEmployerById(result.getBody().getObject().getId());
 	}
 
 	@Test

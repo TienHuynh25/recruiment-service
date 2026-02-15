@@ -9,30 +9,23 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity // This tells Hibernate to make a table out of this class
-@Table(name = "employer")
+@Entity
+@Table(name = "job_field")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployerEntity implements Serializable {
+public class JobFieldEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "email", unique = true)
-    private String email;
-
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "province_id")
-    private JobProvinceEntity province;
-
-    @Column(name = "description")
-    private String description;
+    @Column(name = "slug")
+    private String slug;
 
     @Column(name = "created_at")
     private Date createdAt = new Date();

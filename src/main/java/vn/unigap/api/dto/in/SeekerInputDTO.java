@@ -14,19 +14,21 @@ import vn.unigap.api.common.Constants;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EmployerInputDTO {
+public class SeekerInputDTO {
+    @NotEmpty(message = Constants.VALIDATE_NAME_NOT_EMPTY)
+    @Size(min = 3, max = 255, message = Constants.VALIDATE_NAME_SIZE)
+    private String name;
+
     @NotEmpty(message = Constants.VALIDATE_EMAIL_NOT_EMPTY)
     @Email(message = Constants.VALIDATE_EMAIL_INVALID)
     @Size(min = 3, max = 255, message = Constants.VALIDATE_EMAIL_SIZE)
     private String email;
 
-    @NotEmpty(message = Constants.VALIDATE_NAME_NOT_EMPTY)
-    @Size(min = 3, max = 255, message = Constants.VALIDATE_NAME_SIZE)
-    private String name;
+    private String birthday;
+
+    @Size(min = 3, max = 500, message = Constants.VALIDATE_ADDRESS_SIZE)
+    private String address;
 
     @NotNull(message = Constants.VALIDATE_PROVINCE_NOT_EMPTY)
     private Long provinceId;
-
-    @Size(min = 3, max = 500, message = Constants.VALIDATE_DESCRIPTION_SIZE)
-    private String description;
 }
